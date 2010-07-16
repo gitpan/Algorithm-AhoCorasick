@@ -16,7 +16,7 @@ our %EXPORT_TAGS = ( 'all' => [ qw(
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub find_first {
     my $text = shift;
@@ -63,7 +63,7 @@ Algorithm::AhoCorasick - efficient search for multiple strings
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =head1 SYNOPSIS
 
@@ -138,7 +138,7 @@ your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2007 Vaclav Barta, all rights reserved.
+Copyright 2010 Vaclav Barta, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

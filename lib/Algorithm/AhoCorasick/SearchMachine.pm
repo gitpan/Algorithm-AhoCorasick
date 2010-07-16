@@ -119,6 +119,7 @@ package Algorithm::AhoCorasick::Node;
 
 use strict;
 use warnings;
+use Scalar::Util qw(weaken);
 
 sub new {
     my $class = shift;
@@ -126,6 +127,7 @@ sub new {
     my $self = { @_ };
     $self->{results} = { };
     $self->{transitions} = { };
+    weaken $self->{parent} if $self->{parent};
     return bless $self, $class;
 }
 
@@ -153,7 +155,8 @@ sub failure {
     my $self = shift;
 
     if (@_) {
-	$self->{failure} = $_[0];
+        $self->{failure} = $_[0];
+        weaken $self->{failure};
     }
 
     return $self->{failure};
@@ -204,7 +207,7 @@ Algorithm::AhoCorasick::SearchMachine - implementation and low-level interface o
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =head1 SYNOPSIS
 
@@ -255,7 +258,7 @@ Vaclav Barta, C<< <vbar@comp.cz> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2007 Vaclav Barta, all rights reserved.
+Copyright 2010 Vaclav Barta, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
